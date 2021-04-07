@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: lwa-search-engine
+  cloud:
+    config:
+      uri: http://localhost:8888
+      name: lwa-search-engine,application-role-config,application-preload-users,application-group-config,application-database,application-custom-users,application-discovery,application-configuration

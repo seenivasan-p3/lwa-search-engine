@@ -1,0 +1,95 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.5.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+	id 'distribution'
+	id "org.sonarqube" version "3.0"
+}
+
+group = 'com.p3.lwa'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+ext {
+	set('springCloudVersion', "Hoxton.SR9")
+}
+dependencies {
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	implementation 'org.jetbrains:annotations:20.1.0'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-feign', version: '1.4.7.RELEASE'
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	implementation group: 'org.apache.ignite', name: 'ignite-spring', version: '2.10.0'
+	implementation group: 'org.apache.ignite', name: 'ignite-core', version: '2.10.0'
+	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.3.9.RELEASE'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.3.9.RELEASE'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-cache', version: '2.3.9.RELEASE'
+	implementation group: 'org.springframework', name: 'spring-context', version: '5.2.13.RELEASE'
+	implementation group: 'org.springframework', name: 'spring-context-support', version: '5.2.13.RELEASE'
+	implementation group: 'redis.clients', name: 'jedis', version: '3.3.0'
+//	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.3.9.RELEASE'
+	implementation group: 'org.springframework.data', name: 'spring-data-redis', version: '2.3.7.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation group: 'org.mapdb', name: 'mapdb', version: '3.0.8'
+	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+	testImplementation 'io.projectreactor:reactor-test'
+//	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	compileOnly 'org.projectlombok:lombok'
+	implementation group: 'tech.units', name: 'indriya', version: '2.1.1'
+	implementation group: 'com.google.guava', name: 'guava', version: '30.1-jre'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	compile 'com.jayway.jsonpath:json-path:2.4.0'
+	compile 'org.codehaus.woodstox:wstx-asl:3.2.4'
+	//   compile group: 'org.apache.drill.exec', name: 'drill-jdbc-all', version: '1.17.0'
+	implementation group: 'org.apache.drill.exec', name: 'drill-jdbc-all', version: '1.18.0'
+	//  implementation 'org.apache.drill.exec:drill-java-exec:1.18.0'
+	//  implementation group: 'com.github.vvysotskyi.drill-calcite', name: 'calcite-core', version: '1.21.0-drill-r0'
+
+	// implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.7.4'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'io.projectreactor:reactor-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compile 'com.h2database:h2:1.4.197'
+	implementation group: 'org.apache.ignite', name: 'ignite-spring-data_2.2', version: '2.9.1'
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.3'
+	compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.12.2'
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+	compile 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation group: 'org.apache.ignite', name: 'ignite-indexing', version: '2.10.0'
+	implementation group: 'org.apache.ignite', name: 'ignite-slf4j', version: '2.10.0'
+	implementation group: 'javax.cache', name: 'cache-api', version: '1.1.1'
+	implementation group: 'net.sf.ehcache', name: 'ehcache', version: '2.10.6'
+
+
+}
+
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
+
+
